@@ -3,8 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 
+interface Article {
+  title: string;
+  url: string;
+  date: string;
+  excerpt: string;
+  source: string;
+}
+
+interface Articles {
+  [category: string]: Article[];
+}
+
 export function DesignDigestApp() {
-  const [articles, setArticles] = useState<any>({});
+  const [articles, setArticles] = useState<Articles>({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +40,7 @@ export function DesignDigestApp() {
     <div className="mx-auto max-w-6xl p-4">
       <h1 className="text-3xl font-bold text-center mb-8">Design Weekly Digest</h1>
       <div className="grid gap-6">
-        {Object.entries(articles).map(([category, items]: [string, any[]]) => (
+        {Object.entries(articles).map(([category, items]: [string, Article[]]) => (
           <div key={category}>
             <h2 className="text-2xl font-semibold mb-4">{category}</h2>
             <div className="grid gap-4">
@@ -58,4 +70,3 @@ export function DesignDigestApp() {
     </div>
   );
 }
-
