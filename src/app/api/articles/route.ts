@@ -1,7 +1,19 @@
 import { NextResponse } from 'next/server';
 
+interface Article {
+  title: string;
+  url: string;
+  date: string;
+  excerpt: string;
+  source: string;
+}
+
+interface Articles {
+  [category: string]: Article[];
+}
+
 export async function GET() {
-  const articles = {
+  const articles: Articles = {
     'Web Design': [
       {
         title: 'The Future of Responsive Design',
@@ -27,4 +39,3 @@ export async function GET() {
 
   return NextResponse.json({ articles });
 }
-
