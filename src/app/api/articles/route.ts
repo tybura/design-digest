@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
-export async function GET(request: NextRequest) {
-  // Example data structure - this will be replaced with real RSS feeds
+export async function GET() {
   const articles = {
     'Web Design': [
       {
@@ -29,3 +27,4 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({ articles });
 }
+
